@@ -1,0 +1,6 @@
+{
+  "name": "AI Web Studio",
+  "description": "An interactive workspace ready for building web applications.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
