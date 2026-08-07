@@ -5,6 +5,8 @@ const { spawn } = require('child_process');
 let mainWindow;
 let serverProcess;
 
+app.name = 'JEE-Physics-Sandbox';
+
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1400,
@@ -14,6 +16,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
+      partition: 'persist:jee_physics_session',
     },
     backgroundColor: '#020617',
     autoHideMenuBar: true,
