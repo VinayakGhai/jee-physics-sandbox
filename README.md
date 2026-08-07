@@ -26,11 +26,11 @@ Rather than relying on static formulas and memorization, JEE Sandbox empowers st
 
 ## 📦 Download Standalone Desktop Releases
 
-Download ready-to-run desktop apps directly from [GitHub Releases v1.0.0](https://github.com/VinayakGhai/jee-physics-sandbox/releases/tag/v1.0.0):
+Download ready-to-run desktop apps directly from [GitHub Releases v1.0.1](https://github.com/VinayakGhai/jee-physics-sandbox/releases/tag/v1.0.1):
 
-- 🐧 **Linux AppImage**: [Download `JEE-Physics-Sandbox-1.0.0.AppImage`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.0/JEE-Physics-Sandbox-1.0.0.AppImage)
-  - *Quick Run*: `chmod +x JEE-Physics-Sandbox-1.0.0.AppImage && ./JEE-Physics-Sandbox-1.0.0.AppImage`
-- 🪟 **Windows Desktop**: Pre-packaged Windows portable build available under [v1.0.0 Release Assets](https://github.com/VinayakGhai/jee-physics-sandbox/releases/tag/v1.0.0).
+- 🐧 **Linux AppImage**: [Download `JEE-Physics-Sandbox-1.0.1.AppImage`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.1/JEE-Physics-Sandbox-1.0.1.AppImage)
+  - *Quick Run*: `chmod +x JEE-Physics-Sandbox-1.0.1.AppImage && ./JEE-Physics-Sandbox-1.0.1.AppImage`
+- 🪟 **Windows Desktop**: Pre-packaged Windows portable build available under [v1.0.1 Release Assets](https://github.com/VinayakGhai/jee-physics-sandbox/releases/tag/v1.0.1).
 
 ---
 
