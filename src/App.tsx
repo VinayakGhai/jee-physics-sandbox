@@ -366,6 +366,7 @@ export default function App() {
             probeData,
           }}
           providerConfig={aiConfig}
+          onSaveConfig={handleSaveAiConfig}
         />
       </div>
 
