@@ -23,6 +23,17 @@ Download ready-to-run apps directly from [GitHub Releases v1.0.3](https://github
 
 ---
 
+## 🌐 Live 24/7 Web App Deployment
+
+To host this app on a live website, deploy it to your **Render** account with a single click. Render will automatically read the [`render.yaml`](render.yaml) configuration, build the Vite app, start the Express server, and host it on your custom subdomain (e.g. `jee-physics-sandbox.onrender.com`):
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/VinayakGhai/jee-physics-sandbox)
+
+> [!NOTE]
+> Render subdomains are private to the account that deploys them. If you haven't deployed the repository on your Render dashboard yet, navigating to the URL will show **"Not Found"**. Click the button above to launch it under your own Render account!
+
+---
+
 ## 🎮 How to Use JEE Sandbox (Guided App Tutorial)
 
 Follow this step-by-step tutorial to get the most out of your physics discovery sessions:
