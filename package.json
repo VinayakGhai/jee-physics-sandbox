@@ -1,7 +1,7 @@
 {
   "name": "jee-physics-studio",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Interactive JEE Physics Simulation Platform & AI Studio",
   "author": "Vinayak Ghai <vinayakghai@example.com>",
   "main": "desktop-main.cjs",
