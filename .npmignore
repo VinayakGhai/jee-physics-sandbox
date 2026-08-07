@@ -1,0 +1,10 @@
+release-builds/
+node_modules/
+.cache/
+*.log
+*.AppImage
+*.tar.gz
+*.deb
+*.rpm
+*.exe
+*.zip

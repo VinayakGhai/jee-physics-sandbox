@@ -1,9 +1,16 @@
 {
-  "name": "jee-physics-studio",
-  "private": true,
-  "version": "1.0.3",
-  "description": "Interactive JEE Physics Simulation Platform & AI Studio",
+  "name": "@vinayakghai/jee-physics-sandbox",
+  "version": "1.0.4",
+  "description": "Interactive JEE Physics Simulation Engine & AI Studio featuring real-time Electrostatics vector fields, KaTeX math evaluation, telemetry graphs, and Socratic tutoring.",
   "author": "Vinayak Ghai <vinayakghai@example.com>",
+  "license": "GPL-2.0-only",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VinayakGhai/jee-physics-sandbox.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "main": "desktop-main.cjs",
   "type": "module",
   "scripts": {
@@ -26,7 +33,7 @@
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
     "react": "^19.0.1",
-    "react-dom": "^19.0.1",
+    "react-dom": "^19.2.8",
     "vite": "^6.2.3"
   },
   "devDependencies": {

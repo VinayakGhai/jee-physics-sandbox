@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
 import { SimulationCanvas } from './components/SimulationCanvas';
@@ -15,12 +15,61 @@ import { SimulationPreset, LearningMode, GraphDataPoint, AIProviderConfig } from
 import { PhysicsEngine } from './engine/physicsEngine';
 
 export default function App() {
-  const [activePreset, setActivePreset] = useState<SimulationPreset>(SIMULATION_PRESETS[0]);
+  const [activePreset, setActivePreset] = useState<SimulationPreset>(() => {
+    const savedPresetId = localStorage.getItem('jee_active_preset_id');
+    if (savedPresetId) {
+      const found = SIMULATION_PRESETS.find((p) => p.id === savedPresetId);
+      if (found) return found;
+    }
+    return SIMULATION_PRESETS[0];
+  });
+
+  // Telemetry session tracking
+  useEffect(() => {
+    const getSessionId = () => {
+      let id = localStorage.getItem('jee_session_id');
+      if (!id) {
+        id = 'sess_' + Math.random().toString(36).substring(2, 15) + '_' + Date.now();
+        localStorage.setItem('jee_session_id', id);
+      }
+      return id;
+    };
+
+    const sendPing = () => {
+      fetch('/api/analytics/ping', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionId: getSessionId(),
+          presetId: activePreset.id,
+        }),
+      }).catch(() => {
+        // ignore errors gracefully (e.g. offline)
+      });
+    };
+
+    sendPing();
+    const interval = setInterval(sendPing, 30000);
+    return () => clearInterval(interval);
+  }, [activePreset.id]);
+
+
   const [learningMode, setLearningMode] = useState<LearningMode>('explore');
   const [activeBottomTab, setActiveBottomTab] = useState<'formula' | 'graph' | 'challenge'>('formula');
 
-  // Simulation Parameters state
-  const [params, setParams] = useState<Record<string, number>>(SIMULATION_PRESETS[0].defaultParams);
+  // Simulation Parameters state loaded from session storage
+  const [params, setParams] = useState<Record<string, number>>(() => {
+    const savedPresetId = localStorage.getItem('jee_active_preset_id') || SIMULATION_PRESETS[0].id;
+    const savedParams = localStorage.getItem(`jee_params_${savedPresetId}`);
+    if (savedParams) {
+      try {
+        return JSON.parse(savedParams);
+      } catch {
+        // fallback to default
+      }
+    }
+    return SIMULATION_PRESETS[0].defaultParams;
+  });
 
   // Real-time Graph Data History
   const [graphHistory, setGraphHistory] = useState<GraphDataPoint[]>([]);
@@ -36,32 +85,59 @@ export default function App() {
   const [isArchitectureOpen, setIsArchitectureOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
-  // AI Provider Configuration
-  const [aiConfig, setAiConfig] = useState<AIProviderConfig>({
-    provider: 'gemini',
-    apiKey: '',
+  // AI Provider Configuration (Persistent across sessions)
+  const [aiConfig, setAiConfig] = useState<AIProviderConfig>(() => {
+    const savedConfig = localStorage.getItem('jee_ai_config');
+    if (savedConfig) {
+      try {
+        return JSON.parse(savedConfig);
+      } catch {
+        // fallback
+      }
+    }
+    return { provider: 'gemini', apiKey: '' };
   });
 
-  // Switch Active Preset
+  // Save AI Config on change
+  const handleSaveAiConfig = (newConfig: AIProviderConfig) => {
+    setAiConfig(newConfig);
+    localStorage.setItem('jee_ai_config', JSON.stringify(newConfig));
+  };
+
+  // Switch Active Preset and load stored parameters
   const handleSelectPreset = (preset: SimulationPreset) => {
     setActivePreset(preset);
-    setParams(preset.defaultParams);
+    localStorage.setItem('jee_active_preset_id', preset.id);
+
+    const savedParams = localStorage.getItem(`jee_params_${preset.id}`);
+    if (savedParams) {
+      try {
+        setParams(JSON.parse(savedParams));
+      } catch {
+        setParams(preset.defaultParams);
+      }
+    } else {
+      setParams(preset.defaultParams);
+    }
     setGraphHistory([]);
     setLiveSimData({ params: preset.defaultParams });
   };
 
-  // Update Variable Slider
+  // Update Variable Slider & sync session
   const handleParamChange = (id: string, val: number) => {
-    setParams((prev) => ({
-      ...prev,
-      [id]: val,
-    }));
+    setParams((prev) => {
+      const next = { ...prev, [id]: val };
+      localStorage.setItem(`jee_params_${activePreset.id}`, JSON.stringify(next));
+      return next;
+    });
   };
 
   const handleResetParams = () => {
     setParams(activePreset.defaultParams);
+    localStorage.removeItem(`jee_params_${activePreset.id}`);
     setGraphHistory([]);
   };
+
 
   // Sim Tick Callback
   const handleSimTick = (timeSec: number, simData: any) => {
@@ -303,7 +379,7 @@ export default function App() {
         isOpen={isSettingsOpen}
         onClose={() => setIsSettingsOpen(false)}
         config={aiConfig}
-        onSaveConfig={setAiConfig}
+        onSaveConfig={handleSaveAiConfig}
       />
     </div>
   );
