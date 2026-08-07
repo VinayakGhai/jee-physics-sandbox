@@ -1,0 +1,117 @@
+name: Auto Release on PR Merge
+
+on:
+  push:
+    branches:
+      - main
+    # Don't trigger if the only change is the version bump commit itself
+    paths-ignore:
+      - '.github/**'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Bump version, build & publish release
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Checkout ────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── 2. Setup Node ──────────────────────────────────────────────────────
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # ── 3. Install dependencies ────────────────────────────────────────────
+      - name: Install dependencies
+        run: npm ci
+
+      # ── 4. Bump patch version ──────────────────────────────────────────────
+      - name: Bump patch version
+        id: version
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          NEW_VERSION=$(npm version patch --no-git-tag-version)
+          echo "new_version=${NEW_VERSION}" >> $GITHUB_OUTPUT
+          echo "Bumped to ${NEW_VERSION}"
+
+      # ── 5. Commit & tag the version bump ──────────────────────────────────
+      - name: Commit version bump
+        run: |
+          git add package.json
+          git commit -m "chore: bump version to ${{ steps.version.outputs.new_version }} [skip ci]"
+          git tag ${{ steps.version.outputs.new_version }}
+          git push origin main --tags
+
+      # ── 6. Dependencies for Linux native builds ───────────────────────────
+      - name: Install Linux build dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y \
+            libgtk-3-dev \
+            libxss1 \
+            libgconf-2-4 \
+            libnss3 \
+            libxrandr2 \
+            libasound2-dev \
+            libpangocairo-1.0-0 \
+            libatk1.0-0 \
+            libcairo-gobject2 \
+            fuse \
+            libfuse2
+
+      # ── 7. Build Vite + server bundle ─────────────────────────────────────
+      - name: Build production bundle
+        run: npm run build
+
+      # ── 8. Build Linux AppImage ────────────────────────────────────────────
+      - name: Build Linux AppImage
+        run: npx electron-builder --linux AppImage --config electron-builder.json
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── 9. Build Windows portable Setup.exe (cross-compiled on Linux) ─────
+      - name: Build Windows Setup.exe
+        run: npx electron-builder --win portable --config electron-builder.json
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── 10. Collect built artifacts ───────────────────────────────────────
+      - name: List release-builds artifacts
+        run: ls -lh release-builds/*.AppImage release-builds/*-Setup.exe
+
+      # ── 11. Create GitHub Release ─────────────────────────────────────────
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.new_version }}
+          name: "JEE Physics Sandbox ${{ steps.version.outputs.new_version }}"
+          body: |
+            ## 🚀 What's new in ${{ steps.version.outputs.new_version }}
+
+            This release was automatically generated when a pull request was merged into `main`.
+
+            ### 📦 Downloads
+
+            | Platform | File |
+            |---|---|
+            | 🪟 Windows | `JEE-Physics-Sandbox-*-Setup.exe` — double-click to run, no install required |
+            | 🐧 Linux | `JEE-Physics-Sandbox-*.AppImage` — `chmod +x` and run |
+
+            See the full [README](https://github.com/VinayakGhai/jee-physics-sandbox#readme) for usage instructions.
+          files: |
+            release-builds/*.AppImage
+            release-builds/*-Setup.exe
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
