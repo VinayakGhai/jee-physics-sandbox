@@ -11,7 +11,7 @@
   ],
   "icon": "assets/icon.png",
   "linux": {
-    "target": ["AppImage", "deb", "rpm", "tar.gz"],
+    "target": ["AppImage", "tar.gz"],
     "category": "Education",
     "icon": "assets/icon.png"
   },
