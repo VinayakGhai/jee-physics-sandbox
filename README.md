@@ -3,7 +3,6 @@
 [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-blue.svg)](LICENSE)
 [![React](https://img.shields.io/badge/React-19.0-61dafb.svg)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178c6.svg)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.2-646cff.svg)](https://vitejs.dev/)
 [![KaTeX](https://img.shields.io/badge/KaTeX-Math--Rendering-00b894.svg)](https://katex.org/)
 
 **JEE Physics Sandbox** is an interactive, visually intuitive simulation engine and AI tutoring platform designed specifically for **IIT-JEE Main & Advanced** physics education. 
@@ -12,95 +11,58 @@ Rather than relying on static formulas and memorization, JEE Sandbox empowers st
 
 ---
 
-## 🌟 Core Features
+## 📦 Standalone Desktop Downloads
 
-- ⚡ **Complete JEE Electrostatics Suite**: Multi-charge Coulomb force superposition, Electric field vectors, Equipotential contours, Dipole dynamics, Gauss's Law spherical distributions, and Parallel Plate Capacitors with dielectric slab insertion.
-- 📐 **Live KaTeX Math Engine**: Publication-grade mathematical expressions rendering real-time LaTeX formulas with instant numerical evaluation as you drag parameter sliders.
-- 🎯 **Interactive HUD & Vector Controls**: Toggleable force ($\mathbf{F}$), velocity ($\mathbf{v}$), electric field ($\mathbf{E}$), and magnetic field ($\mathbf{B}$) vector overlays with play/pause, step frame, and time speed controls ($0.25\times \dots 2.0\times$).
-- 📊 **Real-Time Telemetry & CSV Export**: Plot real-time variable histories (potential, force, field magnitude, capacitance, energy) with one-click **CSV data export** for lab analysis.
-- 🤖 **Socratic AI Mentor (Gemini 3.6 Flash + Offline Fallback)**: Intelligent AI tutor providing conceptual intuition, step-by-step derivations, and standard JEE exam trap callouts. Works both online (via Gemini API) and offline (rule-based Socratic engine).
-- 🐧 **Native Linux Desktop App**: Packaged with Electron integration so it can run as a lightweight, standalone native Linux desktop application.
-- 🧱 **Modular Engine Architecture**: Built upon a decoupled simulation framework (`PhysicsEngine`, `CanvasRenderer`, `PresetEngine`) enabling seamless expansion to Current Electricity, Magnetism, Optics, Mechanics, and Thermodynamics.
+Download ready-to-run apps directly from [GitHub Releases v1.0.3](https://github.com/VinayakGhai/jee-physics-sandbox/releases/tag/v1.0.3):
 
----
-
-## 📦 Download Desktop Packages & Executables
-
-Download ready-to-run packages directly from [GitHub Releases v1.0.3](https://github.com/VinayakGhai/jee-physics-sandbox/releases/tag/v1.0.3):
-
-### 🐧 Linux Packages
-- 🚀 **AppImage Portable Executable**: [Download `JEE-Physics-Sandbox-1.0.3.AppImage`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.3/JEE-Physics-Sandbox-1.0.3.AppImage)
-  - *Quick Run*: `chmod +x JEE-Physics-Sandbox-1.0.3.AppImage && ./JEE-Physics-Sandbox-1.0.3.AppImage`
-- 📦 **Tarball Archive Package (`.tar.gz`)**: [Download `jee-physics-studio-1.0.3.tar.gz`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.3/jee-physics-studio-1.0.3.tar.gz)
-
-### 🪟 Windows Packages
-- ⚙️ **Direct Setup Executable (`.exe`)**: [Download `JEE-Physics-Sandbox-1.0.2-Setup.exe`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.2/JEE-Physics-Sandbox-1.0.2-Setup.exe)
-- 📦 **Portable Zip Package (`.zip`)**: [Download `JEE-Physics-Sandbox-1.0.3-win.zip`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.3/JEE-Physics-Sandbox-1.0.3-win.zip)
+| Platform | Format | Download Link | Quick Instructions |
+| :--- | :--- | :--- | :--- |
+| 🪟 **Windows** | Direct Executable (`.exe`) | **[Download Setup `.exe`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.3/JEE-Physics-Sandbox-1.0.3-Setup.exe)** | Double-click to launch immediately |
+| 🐧 **Linux** | AppImage (`.AppImage`) | **[Download `.AppImage`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.3/JEE-Physics-Sandbox-1.0.3.AppImage)** | `chmod +x JEE-Physics-Sandbox-1.0.3.AppImage && ./JEE-Physics-Sandbox-1.0.3.AppImage` |
+| 🐧 **Linux** | Tarball Package (`.tar.gz`) | **[Download `.tar.gz`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.3/jee-physics-studio-1.0.3.tar.gz)** | Extract and run executable |
 
 ---
 
+## 🎮 How to Use JEE Sandbox (Guided App Tutorial)
 
-## 🚀 Quickstart & Tutorial
+Follow this step-by-step tutorial to get the most out of your physics discovery sessions:
 
-### Prerequisites
-
-Ensure you have **Node.js** (v18 or higher) installed on your system.
-
-```bash
-node -v
-npm -v
-```
-
-### 1. Clone & Install Dependencies
-
-```bash
-# Clone the repository
-git clone https://github.com/VinayakGhai/jee-physics-sandbox.git
-cd jee-physics-sandbox
-
-# Install npm packages
-npm install
-```
+### 1. Pick a Physics Chapter Preset
+Use the top preset dropdown in the navigation header to switch between different **JEE Electrostatics** modules:
+- ⚡ **Coulomb's Law & Neutral Points**: Explore 2-charge superposition, dielectric screening ($K$), and locate equilibrium points where $E_{net} = 0$.
+- 🔄 **Electric Dipole Dynamics**: Manipulate dipole moments $\vec{p}$, observe torque vectors ($\vec{\tau} = \vec{p} \times \vec{E}$), potential energy $U = -\vec{p} \cdot \vec{E}$, and test stable vs unstable equilibrium angles.
+- 🌐 **Gauss's Law Spherical Distributions**: Drag internal probe radius $r$ to compare conducting ($E_{in}=0$) vs non-conducting ($E_{in}\propto r$) charge distributions with live inset graphs.
+- 🔋 **Parallel Plate Capacitors & Dielectrics**: Slide dielectric slabs $K$ into parallel plates under **Constant Voltage** (battery connected) or **Constant Charge** (battery disconnected) modes.
 
 ---
 
-### 2. Run the Web Development Application
-
-Start the local Express & Vite development server:
-
-```bash
-npm run dev
-```
-
-Open your browser and navigate to:
-👉 **`http://localhost:3000`**
+### 2. Experiment with Interactive Canvas HUD Controls
+- **Drag & Drop**: Click and drag charges, dipole vectors, or probe points directly on the 2D Canvas stage.
+- **Vector Overlays**: Toggle live Force ($\mathbf{F}$), Velocity ($\mathbf{v}$), Electric Field ($\mathbf{E}$), and Equipotential ring contours.
+- **Playback Controls**: Use the play/pause button, step forward single frame, or adjust simulation speed ($0.25\times \dots 2.0\times$).
 
 ---
 
-### 3. Run as Native Linux Desktop App
-
-To launch JEE Sandbox inside a standalone Linux desktop window:
-
-```bash
-npm run desktop
-```
+### 3. Inspect Live KaTeX Math & Dynamic Formula Evaluation
+Click on the **Live Formulas & Math** bottom tab to view publication-grade LaTeX mathematical expressions. As you move parameter sliders, the numerical variables and step-by-step formula evaluation update in real time!
 
 ---
 
-### 4. Build for Production
-
-To create an optimized production bundle:
-
-```bash
-npm run build
-npm start
-```
+### 4. Engage with the Socratic AI Mentor
+Click the ✨ **AI Mentor** button in the header:
+- Ask conceptual questions like *"Why is electric potential zero at infinity?"* or *"Explain dipole oscillation frequency."*
+- Receives step-by-step Socratic hints, physical intuitions, and JEE exam trap warnings.
+- Works offline out of the box or connects to Google Gemini Flash API when an API key is configured.
 
 ---
 
-## 🔬 Electrostatics Suite Breakdown
+### 5. Solve JEE Challenges & Export Telemetry
+- Switch to **JEE Challenges** tab to tackle interactive quantitative goals (e.g., *"Adjust charge positions to achieve zero force at the origin"*).
+- Switch to **Real-Time Telemetry Graph** to view historical plots of field magnitude, potential energy, or torque, and export your lab data with **1-click CSV Export**.
 
-The initial release features 6 comprehensive JEE Electrostatics presets:
+---
+
+## 🔬 Detailed Electrostatics Module Breakdown
 
 | Simulation Preset | JEE Syllabus Concepts & Equations | Key Experimentation |
 | :--- | :--- | :--- |
@@ -109,35 +71,42 @@ The initial release features 6 comprehensive JEE Electrostatics presets:
 | **Gauss's Law Distributions** | $\Phi_E = \oint \vec{E} \cdot d\vec{A} = \frac{Q_{enc}}{\varepsilon_0}$ | Compare Conducting ($E_{in}=0$) vs Non-Conducting ($E_{in}\propto r$) spheres with live $E(r)$ curve HUD. |
 | **Capacitors & Dielectrics** | $C = K \frac{\varepsilon_0 A}{d}$, $U = \frac{1}{2} C V^2$, $u = \frac{1}{2}\varepsilon_0 E^2$ | Insert dielectric slab $K$, compare **Battery Connected** ($V$ constant) vs **Battery Disconnected** ($Q$ constant) modes. |
 | **Multi-Charge Field Sandbox** | $V(x,y) = \sum \frac{k q_i}{r_i}$ | Interactive playground to place positive and negative charges, viewing equipotential rings and field grids. |
-| **2D Ray & Wave Optics / SHM** | Thin lens optics, Young's double-slit interference, RK4 pendulum SHM | Explore wave fringe spacing $\beta = \frac{\lambda D}{d}$ and lens magnification $m = v/u$. |
 
 ---
 
-## 🛠️ Project Structure
+## 🛠️ Developer Setup & Source Build
 
+If you want to run JEE Sandbox from source or contribute code:
+
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+
+### 1. Clone & Install
+```bash
+git clone https://github.com/VinayakGhai/jee-physics-sandbox.git
+cd jee-physics-sandbox
+npm install
 ```
-jee-physics-sandbox/
-├── server.ts                 # Express backend server with Gemini AI endpoint & Vite SPA handler
-├── desktop-main.cjs          # Electron native Linux desktop app launcher
-├── package.json              # App scripts and npm dependencies
-├── LICENSE                   # GNU General Public License v2.0 (GPLv2)
-└── src/
-    ├── App.tsx               # Main React dashboard layout & telemetry router
-    ├── main.tsx              # Application entry point with KaTeX stylesheet
-    ├── types/
-    │   └── physics.ts        # Core TypeScript interfaces & simulation definitions
-    ├── engine/
-    │   ├── physicsEngine.ts  # Numerical solvers (Electrostatics, Gauss Law, Dipoles, RK4 SHM)
-    │   └── canvasRenderer.ts # HTML5 Canvas 2D engine for vector fields, equipotentials & HUDs
-    ├── data/
-    │   └── simulationsData.ts# JEE preset registry with LaTeX templates & automated challenges
-    └── components/
-        ├── SimulationCanvas.tsx  # Interactive canvas HUD with drag controls & vector toggles
-        ├── FormulaEngine.tsx     # Live KaTeX LaTeX formula evaluator
-        ├── GraphEngine.tsx       # Real-time telemetry plotter with CSV export
-        ├── ChallengePanel.tsx    # Automated JEE goal checker & hint accordion
-        ├── AITeacher.tsx         # Socratic AI Physics Mentor (Online + Offline)
-        └── Navbar.tsx            # Header controls & mode toggles
+
+### 2. Run Local Web Dev Server
+```bash
+npm run dev
+# Open http://localhost:3000 in your browser
+```
+
+### 3. Run Native Linux Desktop Window
+```bash
+npm run desktop
+```
+
+### 4. Package Release Executables
+```bash
+# Build Linux AppImage
+npm run dist:linux
+
+# Build Windows Setup Executable
+npm run dist:win
 ```
 
 ---
@@ -147,17 +116,16 @@ jee-physics-sandbox/
 JEE Sandbox includes a built-in offline Socratic tutor out of the box. To enable live Gemini AI explanations:
 
 1. Obtain a Gemini API key from [Google AI Studio](https://aistudio.google.com/).
-2. Create a `.env.local` file in the root directory:
+2. Enter your API Key inside the **Settings** modal in the app UI, or create a `.env.local` file:
    ```env
-   GEMINI_API_KEY=your_actual_api_key_here
+   GEMINI_API_KEY=your_api_key_here
    ```
-3. Or enter your API Key inside the **Settings** modal in the app UI.
 
 ---
 
 ## 📜 License
 
-This project is licensed under the **GNU General Public License v2.0 (GPLv2)**. See the [LICENSE](LICENSE) file for complete details.
+This project is licensed under the **GNU General Public License v2.0 (GPLv2)**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
