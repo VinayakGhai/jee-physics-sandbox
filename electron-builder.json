@@ -11,19 +11,15 @@
   ],
   "icon": "assets/icon.png",
   "linux": {
-    "target": ["AppImage", "tar.gz"],
+    "target": ["AppImage", "deb", "rpm", "tar.gz"],
     "category": "Education",
     "icon": "assets/icon.png"
   },
   "win": {
-    "target": ["nsis", "portable"],
+    "target": ["portable", "zip"],
     "icon": "assets/icon.ico"
   },
-  "nsis": {
-    "oneClick": false,
-    "allowToChangeInstallationDirectory": true,
-    "createDesktopShortcut": true,
-    "createStartMenuShortcut": true,
-    "shortcutName": "JEE Physics Sandbox"
+  "portable": {
+    "artifactName": "JEE-Physics-Sandbox-${version}-Setup.exe"
   }
 }
