@@ -1,6 +1,6 @@
 {
   "name": "@vinayakghai/jee-physics-sandbox",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Interactive JEE Physics Simulation Engine & AI Studio featuring real-time Electrostatics vector fields, KaTeX math evaluation, telemetry graphs, and Socratic tutoring.",
   "author": "Vinayak Ghai <vinayakghai@example.com>",
   "license": "GPL-2.0-only",
