@@ -24,13 +24,18 @@ Rather than relying on static formulas and memorization, JEE Sandbox empowers st
 
 ---
 
-## 📦 Download Standalone Desktop Releases
+## 📦 Download Desktop Packages & Executables
 
-Download ready-to-run desktop apps directly from [GitHub Releases v1.0.1](https://github.com/VinayakGhai/jee-physics-sandbox/releases/tag/v1.0.1):
+Download ready-to-run packages directly from [GitHub Releases v1.0.3](https://github.com/VinayakGhai/jee-physics-sandbox/releases/tag/v1.0.3):
 
-- 🐧 **Linux AppImage**: [Download `JEE-Physics-Sandbox-1.0.1.AppImage`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.1/JEE-Physics-Sandbox-1.0.1.AppImage)
-  - *Quick Run*: `chmod +x JEE-Physics-Sandbox-1.0.1.AppImage && ./JEE-Physics-Sandbox-1.0.1.AppImage`
-- 🪟 **Windows Desktop**: Pre-packaged Windows portable build available under [v1.0.1 Release Assets](https://github.com/VinayakGhai/jee-physics-sandbox/releases/tag/v1.0.1).
+### 🐧 Linux Packages
+- 🚀 **AppImage Portable Executable**: [Download `JEE-Physics-Sandbox-1.0.3.AppImage`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.3/JEE-Physics-Sandbox-1.0.3.AppImage)
+  - *Quick Run*: `chmod +x JEE-Physics-Sandbox-1.0.3.AppImage && ./JEE-Physics-Sandbox-1.0.3.AppImage`
+- 📦 **Tarball Archive Package (`.tar.gz`)**: [Download `jee-physics-studio-1.0.3.tar.gz`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.3/jee-physics-studio-1.0.3.tar.gz)
+
+### 🪟 Windows Packages
+- ⚙️ **Direct Setup Executable (`.exe`)**: [Download `JEE-Physics-Sandbox-1.0.2-Setup.exe`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.2/JEE-Physics-Sandbox-1.0.2-Setup.exe)
+- 📦 **Portable Zip Package (`.zip`)**: [Download `JEE-Physics-Sandbox-1.0.3-win.zip`](https://github.com/VinayakGhai/jee-physics-sandbox/releases/download/v1.0.3/JEE-Physics-Sandbox-1.0.3-win.zip)
 
 ---
 
