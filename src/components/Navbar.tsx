@@ -27,16 +27,14 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="h-16 bg-slate-900 border-b border-slate-800 px-5 flex items-center justify-between text-slate-100 select-none z-20">
       {/* Brand & App Identifier */}
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-700 p-0.5 shadow-lg shadow-cyan-500/20 flex items-center justify-center">
-          <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-            <Atom className="w-5 h-5 text-cyan-400 animate-spin-slow" />
-          </div>
+        <div className="w-10 h-10 rounded-xl bg-slate-950 border border-cyan-500/30 p-0.5 shadow-lg shadow-cyan-500/20 flex items-center justify-center overflow-hidden">
+          <img src="/assets/icon.png" alt="JEE Physics Logo" className="w-full h-full object-cover rounded-lg" />
         </div>
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-base font-bold tracking-tight text-white">JEE Sandbox</h1>
             <span className="px-1.5 py-0.5 rounded bg-slate-800 text-[10px] font-mono text-cyan-400 border border-slate-700/60">
-              v1.0 Tauri Linux
+              v1.0 Desktop
             </span>
           </div>
           <p className="text-xs text-slate-400 truncate max-w-[220px] md:max-w-md">

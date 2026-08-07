@@ -10,6 +10,7 @@ function createWindow() {
     width: 1400,
     height: 900,
     title: 'JEE Physics Simulation & AI Studio',
+    icon: path.join(__dirname, 'assets', 'icon.png'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
