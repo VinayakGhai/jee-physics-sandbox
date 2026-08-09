@@ -2,6 +2,7 @@
   "appId": "com.jeephysics.sandbox",
   "productName": "JEE-Physics-Sandbox",
   "executableName": "jee-physics-sandbox",
+  "artifactName": "${executableName}-${version}-${os}-${arch}.${ext}",
   "directories": {
     "output": "dist_desktop"
   },
@@ -14,7 +15,8 @@
   "linux": {
     "target": ["AppImage", "deb"],
     "category": "Education",
-    "icon": "assets/logo.png"
+    "icon": "assets/logo.png",
+    "artifactName": "${executableName}_${version}_${arch}.${ext}"
   },
   "win": {
     "target": ["nsis", "portable", "zip"],
