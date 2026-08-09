@@ -2,24 +2,30 @@
   "appId": "com.jeephysics.sandbox",
   "productName": "JEE-Physics-Sandbox",
   "directories": {
-    "output": "release-builds"
+    "output": "dist_desktop"
   },
   "files": [
     "dist/**/*",
     "desktop-main.cjs",
     "package.json"
   ],
-  "icon": "assets/icon.png",
+  "icon": "assets/logo.png",
   "linux": {
-    "target": ["AppImage", "tar.gz"],
+    "target": ["AppImage", "deb"],
     "category": "Education",
-    "icon": "assets/icon.png"
+    "icon": "assets/logo.png"
   },
   "win": {
-    "target": ["portable", "zip"],
-    "icon": "assets/icon.ico"
+    "target": ["nsis", "portable", "zip"],
+    "icon": "assets/logo.png"
   },
-  "portable": {
-    "artifactName": "JEE-Physics-Sandbox-${version}-Setup.exe"
+  "mac": {
+    "target": ["dmg", "zip"],
+    "category": "public.app-category.education",
+    "icon": "assets/logo.png"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true
   }
 }

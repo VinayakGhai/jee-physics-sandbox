@@ -1,9 +1,23 @@
-# ⚛️ JEE Physics Sandbox & AI Discovery Platform
+<p align="center">
+  <a href="https://jee-physics-sandbox.onrender.com">
+    <img src="assets/logo.png" width="240" alt="JEE Physics Sandbox Logo" style="border-radius: 16px; box-shadow: 0 10px 30px rgba(2,132,199,0.3);">
+  </a>
+</p>
 
-[![License: GPL v2](https://img.shields.io/badge/License-GPLv2-blue.svg)](LICENSE)
-[![React](https://img.shields.io/badge/React-19.0-61dafb.svg)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178c6.svg)](https://www.typescriptlang.org/)
-[![KaTeX](https://img.shields.io/badge/KaTeX-Math--Rendering-00b894.svg)](https://katex.org/)
+<h1 align="center">⚛️ JEE Physics Sandbox & AI Discovery Platform</h1>
+<p align="center">
+  <b>Interactive JEE Physics Simulation Engine & AI Studio</b>
+</p>
+
+<p align="center">
+  <a href="https://github.com/VinayakGhai/jee-physics-sandbox/releases/latest"><img src="https://img.shields.io/badge/Windows-Download_.exe-0078D4?style=for-the-badge&logo=windows" alt="Windows Download"></a>
+  <a href="https://github.com/VinayakGhai/jee-physics-sandbox/releases/latest"><img src="https://img.shields.io/badge/Linux-Download_.AppImage-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux Download"></a>
+  <a href="https://github.com/VinayakGhai/jee-physics-sandbox/releases/latest"><img src="https://img.shields.io/badge/macOS-Download_.dmg-000000?style=for-the-badge&logo=apple" alt="macOS Download"></a>
+  <a href="https://jee-physics-sandbox.onrender.com"><img src="https://img.shields.io/badge/Live_Demo-⚡_Simulation_Engine-0284c7?style=for-the-badge" alt="Live Demo"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv2-8b5cf6?style=for-the-badge" alt="License"></a>
+</p>
+
+---
 
 **JEE Physics Sandbox** is an interactive, visually intuitive simulation engine and AI tutoring platform designed specifically for **IIT-JEE Main & Advanced** physics education. 
 
