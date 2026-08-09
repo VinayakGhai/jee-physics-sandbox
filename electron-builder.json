@@ -14,8 +14,7 @@
   "linux": {
     "target": ["AppImage", "deb"],
     "category": "Education",
-    "icon": "assets/logo.png",
-    "desktopName": "jee-physics-sandbox"
+    "icon": "assets/logo.png"
   },
   "win": {
     "target": ["nsis", "portable", "zip"],
