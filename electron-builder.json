@@ -2,7 +2,6 @@
   "appId": "com.jeephysics.sandbox",
   "productName": "JEE-Physics-Sandbox",
   "executableName": "jee-physics-sandbox",
-  "desktopName": "jee-physics-sandbox",
   "directories": {
     "output": "dist_desktop"
   },
@@ -15,7 +14,8 @@
   "linux": {
     "target": ["AppImage", "deb"],
     "category": "Education",
-    "icon": "assets/logo.png"
+    "icon": "assets/logo.png",
+    "desktopName": "jee-physics-sandbox"
   },
   "win": {
     "target": ["nsis", "portable", "zip"],
