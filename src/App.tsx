@@ -138,6 +138,53 @@ export default function App() {
     setGraphHistory([]);
   };
 
+  // --- Export / Import Simulation State ---
+
+  const handleExportState = () => {
+    const state = {
+      version: '1.0',
+      preset: activePreset.id,
+      params: { ...params },
+      timestamp: new Date().toISOString(),
+    };
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `jee-sandbox-${activePreset.id}-${Date.now()}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleImportState = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = (e: Event) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        try {
+          const data = JSON.parse(ev.target?.result as string);
+          if (data.preset && data.params) {
+            const preset = SIMULATION_PRESETS.find((p) => p.id === data.preset);
+            if (preset) {
+              handleSelectPreset(preset);
+              setParams(data.params);
+              localStorage.setItem(`jee_params_${preset.id}`, JSON.stringify(data.params));
+            }
+          }
+        } catch {
+          console.error('Failed to parse setup file');
+        }
+      };
+      reader.readAsText(file);
+    };
+    input.click();
+  };
 
   // Sim Tick Callback
   const handleSimTick = (timeSec: number, simData: any) => {
@@ -267,6 +314,8 @@ export default function App() {
         onOpenArchitecture={() => setIsArchitectureOpen(true)}
         onOpenSettings={() => setIsSettingsOpen(true)}
         isAITeacherOpen={isAITeacherOpen}
+        onExportState={handleExportState}
+        onImportState={handleImportState}
       />
 
       {/* Main Workspace Layout */}

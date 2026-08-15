@@ -1,5 +1,5 @@
 import React from 'react';
-import { Atom, Play, Sparkles, BookOpen, Layers, Settings, HelpCircle, ShieldCheck, Code, Sliders } from 'lucide-react';
+import { Atom, Play, Sparkles, BookOpen, Layers, Settings, HelpCircle, ShieldCheck, Code, Sliders, Download, Upload } from 'lucide-react';
 import { ModuleId, LearningMode } from '../types/physics';
 
 interface NavbarProps {
@@ -11,6 +11,8 @@ interface NavbarProps {
   onOpenArchitecture: () => void;
   onOpenSettings: () => void;
   isAITeacherOpen: boolean;
+  onExportState: () => void;
+  onImportState: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -22,6 +24,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenArchitecture,
   onOpenSettings,
   isAITeacherOpen,
+  onExportState,
+  onImportState,
 }) => {
   return (
     <header className="h-16 bg-slate-900 border-b border-slate-800 px-5 flex items-center justify-between text-slate-100 select-none z-20">
@@ -62,6 +66,26 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Action Buttons */}
       <div className="flex items-center gap-2">
+        {/* Save Setup */}
+        <button
+          onClick={onExportState}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/80 text-xs font-medium transition-colors"
+          title="Save current simulation setup as JSON"
+        >
+          <Download className="w-3.5 h-3.5 text-emerald-400" />
+          <span className="hidden sm:inline">Save Setup</span>
+        </button>
+
+        {/* Load Setup */}
+        <button
+          onClick={onImportState}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/80 text-xs font-medium transition-colors"
+          title="Load a previously saved simulation setup"
+        >
+          <Upload className="w-3.5 h-3.5 text-sky-400" />
+          <span className="hidden sm:inline">Load Setup</span>
+        </button>
+
         {/* Architecture Documentation View */}
         <button
           onClick={onOpenArchitecture}
